@@ -4,8 +4,19 @@
   "description": "Devcamper backend API",
   "author": "Michael Phan",
   "license": "MIT",
+  "_moduleAliases": {
+    "routes": "dist/routes",
+    "controllers": "dist/controllers",
+    "config": "dist/config",
+    "components": "dist/components",
+    "middleware": "dist/middleware",
+    "types": "dist/types",
+    "utils": "dist/utils",
+    "common": "dist/common"
+  },
   "scripts": {
     "start": "npm run serve",
+    "dev": "ts-node-dev --respawn --transpileOnly src/app.ts",
     "build": "npm run build-ts && npm run lint",
     "serve": "node dist/server.js",
     "watch-node": "nodemon dist/server.js",
@@ -18,19 +29,31 @@
     "watch-debug": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"cyan.bold,green.bold\" \"npm run watch-ts\" \"npm run serve-debug\""
   },
   "dependencies": {
-    "@types/errorhandler": "^0.0.32",
+    "@hapi/joi": "^16.1.7",
+    "colors": "^1.4.0",
     "dotenv": "^8.2.0",
     "errorhandler": "^1.5.1",
     "express": "^4.17.1",
+    "module-alias": "^2.2.2",
+    "mongoose": "^5.7.7",
+    "morgan": "^1.9.1",
+    "reflect-metadata": "^0.1.13",
+    "typedi": "^0.8.0",
     "winston": "^3.2.1"
   },
   "devDependencies": {
     "@types/dotenv": "^8.2.0",
+    "@types/errorhandler": "^0.0.32",
     "@types/express": "^4.17.1",
+    "@types/hapi__joi": "^16.0.3",
+    "@types/mongoose": "^5.5.28",
+    "@types/morgan": "^1.7.37",
+    "@types/node": "^12.12.6",
     "@typescript-eslint/eslint-plugin": "^2.6.0",
     "@typescript-eslint/parser": "^2.6.0",
     "concurrently": "^5.0.0",
     "eslint": "^6.6.0",
+    "ts-node-dev": "^1.0.0-pre.44",
     "typescript": "^3.6.4"
   }
 }

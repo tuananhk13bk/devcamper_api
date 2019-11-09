@@ -1,7 +1,4 @@
 import app from "./app";
-import errorHandler from "errorhandler";
-
-app.use(errorHandler);
 
 const server = app.listen(app.get("port"), () => {
   console.log(
@@ -10,6 +7,11 @@ const server = app.listen(app.get("port"), () => {
     app.get("env")
   );
   console.log("  Press CTRL-C to stop\n");
+});
+
+process.on("unhandledRejection", (err, promise) => {
+  console.log(`Error: ${err}`);
+  server.close(() => process.exit(1));
 });
 
 export default server;
